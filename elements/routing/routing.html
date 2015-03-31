@@ -1,0 +1,11 @@
+
+
+<more-routing-config driver="hash"></more-routing-config>
+
+<more-route name="root" path="/"></more-route>
+<more-route name="login" path="/login"></more-route>
+<more-route name="inbox" path="/inbox">
+    <more-route name="email-list" path="/email-list">
+        <more-route name="email" path="/:emailId"></more-route>
+    </more-route>
+</more-route>

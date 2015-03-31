@@ -1,0 +1,26 @@
+<link rel="import" href="../../elements.html">
+
+<polymer-element name="login-page">
+    <template>
+        <style></style>
+        <more-route 
+                context 
+                name="login" 
+                params="{{params}}">
+        </more-route>
+        This is the login Page
+        <paper-button raised
+            on-click="{{handleClick}}"> Hello
+        </paper-button>
+    </template>
+    <script>
+        Polymer('login-page', {
+            ready: function() {
+                console.log("I am ready");
+            },
+            handleClick: function () {
+                MoreRouting.navigateTo('inbox');
+            }
+        });
+    </script>
+</polymer-element>

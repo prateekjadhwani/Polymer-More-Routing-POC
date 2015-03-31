@@ -1,0 +1,51 @@
+<link rel="import" href="../../elements.html">
+
+<polymer-element name="inbox-page" attributes="">
+    <template>
+        <style>
+            /*
+             * My Styles
+             */
+        </style>
+        <more-route 
+                context 
+                name="inbox" 
+                params="{{params}}">
+        </more-route>
+        This is the Inbox
+        <template repeat="{{email in inboxData.mail}}">
+            <div>
+                <a href="{{ urlFor('email', { emailId : email.id}) }}"> {{email.mailExerpt}}</a> 
+                By <strong>{{ email.sender}}</strong>
+            </div>
+        </template>
+        
+        <more-route-selector selectedParams={{params}}>
+            <email-display route="email"></email-display>
+        </more-route-selector>
+    </template>
+    <script>
+        Polymer('inbox-page', {
+            inboxData : {
+                mail: [
+                    {
+                        sender: 'Prateek',
+                        mailExerpt: 'Hey, I just wanted to let you know...',
+                        id: 1
+                    },
+                    {
+                        sender: 'Some other person',
+                        mailExerpt: 'More stupid stuff that noone cares abt...',
+                        id: 2
+                    }
+                ]
+            },
+            ready: function() {
+//                console.log("I am ready");
+            },
+            created : function () {
+//                console.log("I am Created");
+            }
+        });
+    </script>
+</polymer-element>

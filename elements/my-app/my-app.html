@@ -1,0 +1,26 @@
+<link rel="import" href="../../elements.html">
+
+<polymer-element name="my-app">
+    <template>
+        <style></style>
+        <more-route 
+                context 
+                name="root" 
+                params="{{params}}">
+        </more-route>
+        <more-route-selector>
+            <core-pages>
+                <login-page route="login"></login-page>
+                <inbox-page route="inbox"></inbox-page>
+            </core-pages>
+        </more-route-selector>
+    </template>
+    <script>
+        Polymer('my-app', {
+            ready: function() {
+                console.log("I am ready");
+                MoreRouting.navigateTo("login");
+            }
+        });
+    </script>
+</polymer-element>

@@ -1,0 +1,56 @@
+<link rel="import" href="../../elements.html">
+
+<polymer-element name="email-display" attributes="">
+    <template>
+        <style>
+            /*
+             * My Styles
+             */
+        </style>
+        <!-- My Stuff -->
+        <more-route 
+                context 
+                name="email" 
+                params="{{params}}">
+        </more-route>
+        <div>
+            <template repeat="{{ email in  emailData.mail}}">
+                <template if="{{email.id == selectedID}}">
+                    <h2>{{email.sender}}</h2>
+                    <p>{{email.mail}}</p>
+                </template>
+            </template>
+        </div>
+    </template>
+    <script>
+        Polymer('email-display', {
+            emailData : {
+                mail: [
+                    {
+                        sender: 'Prateek',
+                        mail: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed mauris nulla, tincidunt nec urna venenatis, hendrerit tempor diam. Curabitur luctus velit dictum diam auctor dapibus. Sed sed fermentum felis, vel pretium enim. Nullam in massa eget lacus interdum ultrices. ',
+                        id: 1
+                    },
+                    {
+                        sender: 'Some other person',
+                        mail: 'Vivamus vitae sagittis felis. Nam commodo vulputate nulla sed pretium. Morbi dictum risus est, vel sagittis purus accumsan id. Praesent rutrum, dui ac cursus aliquam, erat ligula ullamcorper diam, ut aliquam eros nisi eu odio. Duis nec nunc vel sem ornare interdum in vitae velit. In convallis nunc neque, a mollis diam accumsan et. Nulla fermentum sodales leo, ac sollicitudin lacus scelerisque a. Aliquam laoreet lacus vitae dui rhoncus bibendum. Phasellus volutpat tortor in urna ornare euismod. Sed ac luctus ipsum, et pellentesque neque. Etiam id pretium magna. Curabitur facilisis orci semper, dapibus odio non, molestie augue. Morbi eget tincidunt justo. Phasellus nec ante convallis, commodo tellus at, laoreet ex. Nullam tincidunt tristique enim, finibus tristique tellus vulputate quis. Quisque nulla neque, ornare quis nibh id, lobortis ullamcorper justo.',
+                        id: 2
+                    }
+                ]
+            },
+            observe: {
+                'params.emailId' : 'emailIdChanged'
+            },
+            ready: function() {
+//                console.log("I am ready");
+            },
+            created : function () {
+//                console.log("I am Created");
+            },
+            emailIdChanged : function () {
+                console.log("emailID changed");
+                this.selectedID = this.params.emailId;
+            }
+        });
+    </script>
+</polymer-element>
